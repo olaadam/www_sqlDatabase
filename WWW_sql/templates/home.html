@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden</title>
+    <link rel="shortcut icon" type="image/png" href="static/images/logo.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div id="top-panel">
+        <div class="button-container">
+            <span>Welcome, {{ username }}!</span>
+        </div>
+        <div class="button-container">
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+    </div>
+
+    <div id="image-buttons" class="centered">
+        <a href="{{ url_for('plant_flower', flower_id=1) }}">
+            <img src="{{ url_for('static', filename='images/flower1.jpeg') }}" alt="Flower 1">
+        </a>
+        <a href="{{ url_for('plant_flower', flower_id=2) }}">
+            <img src="{{ url_for('static', filename='images/flower2.jpeg') }}" alt="Flower 2">
+        </a>
+        <a href="{{ url_for('plant_flower', flower_id=3) }}">
+            <img src="{{ url_for('static', filename='images/flower3.jpeg') }}" alt="Flower 3">
+        </a>
+        <a href="{{ url_for('plant_flower', flower_id=4) }}">
+            <img src="{{ url_for('static', filename='images/flower4.jpeg') }}" alt="Flower 4">
+        </a>
+        <a href="{{ url_for('plant_flower', flower_id=5) }}">
+            <img src="{{ url_for('static', filename='images/flower5.jpg') }}" alt="Flower 5">
+        </a>
+    </div>
+
+    <div id="garden">
+        <h2>Your Garden</h2>
+        <ul>
+            {% for flower in user_flowers %}
+            <li>{{ flower.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
